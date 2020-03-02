@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7B26DD</color>
+    <color name="colorPrimaryDark">#6e0ad6</color>
+    <color name="colorAccent">#f28000</color>
+    <color name="colorQuatro">#8ce563</color>
+</resources>
+
+<!--#8ce563 verde, #6e0ad6 roxo, #f28000 laranja-->

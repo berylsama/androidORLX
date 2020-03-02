@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "496006681139",
+    "firebase_url": "https://lojatudonosso-5a8a9.firebaseio.com",
+    "project_id": "lojatudonosso-5a8a9",
+    "storage_bucket": "lojatudonosso-5a8a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496006681139:android:a079add3e7c04974be4946",
+        "android_client_info": {
+          "package_name": "com.example.orlyx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496006681139-7f6l4p6jaihsqp8rpn74tcn62oscc5bq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.orlyx",
+            "certificate_hash": "becdfa31b604ff091d41f3d3cc9ec233b00d6469"
+          }
+        },
+        {
+          "client_id": "496006681139-dtn15apqi5cua93eh1u5s8l4eus52t3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-39-UXTKRPdjg7Ohk-o0sWxXsAj6wl4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496006681139-dtn15apqi5cua93eh1u5s8l4eus52t3t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
