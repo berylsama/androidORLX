@@ -7,7 +7,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 
-
 public class ConfigFirebase {
 
     private static DatabaseReference referenceFirebase;
@@ -23,7 +22,7 @@ public class ConfigFirebase {
 
     public static FirebaseAuth getReferenciaAutenticacao() {
         if (referenciaAutenticacao == null) {
-            referenciaAutenticacao = FirebaseAuth.getInstance().getInstance();
+            referenciaAutenticacao = FirebaseAuth.getInstance();
         }
         return referenciaAutenticacao;
     }
@@ -34,4 +33,11 @@ public class ConfigFirebase {
         }
         return referenceFirebase;
     }
+
+//    public static StringUsuario();{
+//        FirebaseAuth autenticacao = getFireBaseAutenticacao();
+//        return autenticacao.getCurrentUser().getUid();
+//    }
+
+
 }
