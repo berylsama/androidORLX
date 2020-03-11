@@ -1,9 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".CadastrarAnunciosActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/imgCadastro1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imgCadastro2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/padrao"/>
+
+        <ImageView
+            android:id="@+id/imgCadastro3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/padrao"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/padrao"/>
+
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal"
+    android:padding="15dp">
+
+    <Spinner
+        android:id="@+id/spinnerEstado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <Spinner
+        android:id="@+id/spinnerCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+</LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTitulo"
+        android:hint="Título"
+        android:layout_margin="5dp"
+        android:textSize="25sp"
+        android:textColor="@color/colorAccent"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editDesc"
+        android:inputType="textMultiLine"
+        android:hint="Descrição"
+        android:layout_margin="5dp"
+        android:textColor="@color/colorPrimary"/>
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/editValor"-->
+<!--        android:hint="Valor"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:textColor="@color/colorPrimary"/>   -->
+    <com.blackcat.currencyedittext.CurrencyEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editValor"
+        android:hint="Valor"
+        android:layout_margin="5dp"
+        android:textColor="@color/colorPrimary"/>
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/editContato"-->
+<!--        android:hint="Contato"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:textColor="@color/colorPrimary"/>  -->
+    <com.santalu.maskedittext.MaskEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editContato"
+        android:hint="Contato"
+        android:layout_margin="5dp"
+        android:textColor="@color/colorPrimary"
+        app:met_mask="(##) #####-####"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorQuatro"
+        android:padding="10dp"
+        android:text="Cadastrar anúncio"
+        android:textColor="@color/colorPrimaryDark"/>
+        //android:onClick="validarDadosAnuncio"
+
+</LinearLayout>

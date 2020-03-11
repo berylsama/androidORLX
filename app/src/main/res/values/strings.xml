@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">ORLYX</string>
+    <string-array name="estados">
+        <item>SP</item>
+        <item>RJ</item>
+        <item>MG</item>
+        <item>ES</item>
+        <item>RS</item>
+        <item>PR</item>
+        <item>SC</item>
+        <item>BA</item>
+        <item>AL</item>
+        <item>AC</item>
+    </string-array>
+
+    <string-array name="categorias">
+        <item>Veículos</item>
+        <item>Bicicletas</item>
+        <item>Vestuário</item>
+        <item>Brinquedos</item>
+        <item>Eletrônicos</item>
+        <item>Esportes</item>
+        <item>Móveis</item>
+        <item>Games</item>
+        <item>Alimentação</item>
+        <item>Eletrodomésticos</item>
+        <item>Outros</item>
+
+    </string-array>
 </resources>
