@@ -9,11 +9,17 @@
     tools:context=".CadastrarAnunciosActivity">
 
     <LinearLayout
-        android:id="@+id/imgCadastro1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imgCadastro1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/padrao"/>
 
         <ImageView
             android:id="@+id/imgCadastro2"
@@ -24,12 +30,6 @@
 
         <ImageView
             android:id="@+id/imgCadastro3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/padrao"/>
-
-        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
