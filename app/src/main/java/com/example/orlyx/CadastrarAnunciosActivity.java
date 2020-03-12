@@ -1,10 +1,12 @@
 package com.example.orlyx;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,7 +14,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.blackcat.currencyedittext.CurrencyEditText;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.santalu.maskedittext.MaskEditText;
 
 import java.util.ArrayList;
@@ -55,18 +60,51 @@ public class CadastrarAnunciosActivity extends AppCompatActivity
     
     public void salvarAnuncio(View v){
 
-        dialog = new SpotsDialog.Builder().setContext(this).setMessage("Salvando Anúncio...").setCancelable("false").build();
+//        dialog = new SpotsDialog.Builder().setContext(this).setMessage("Salvando Anúncio...").setCancelable("false").build();
 
-        for (int i = 0; i <listaFotosRecuperadas.size(); i++){
-            String urlimagem = listaFotosRecuperadas.get(i);
-            int tamanhoLista = listaFotosRecuperadas.size();
-            salvarFotosStorage (urlimagem,tamanhoLista,i);
+        for (int contador = 0; contador <listaFotosRecuperadas.size(); contador++){
+            String urlString = listaFotosRecuperadas.get(contador);
+            int totalFotos = listaFotosRecuperadas.size();
+            salvarFotosStorage (urlString,totalFotos,contador);
         }
     }
 
 
-    private void salvarFotosStorage(String urlimagem, int tamanhoLista, int i) {
+    private void salvarFotosStorage(final String urlString, final int totalFotos, int contador) {
+        //Criar a referencia do Storage
+        StorageReference imagemAnuncio = storage.child("imagens").child("anuncios").child(anuncio.getIdAnuncio()).child("imagem" + contador);
+        //Fazer upload do arquivo
+        //Upload Task uploada
+
+        final UploadTask uploadTask = imagemAnuncio.putFile(Uri.parse(urlString));
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                Uri fireaseUrl = taskSnapshot.getUploadSessionUri();
+                String urlConvertida = fireaseUrl.toString();
+                listaURLFotos.add(urlConvertida);
+                if(totalFotos == listaURLFotos.size());{
+                 anuncio.setFotos(listaURLFotos);
+                 anuncio.salvar();
+                 dialog.dismiss();
+                 finish();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //mensagem de erro
+                exibirMensagemErro("Falha ao fazer Upload");
+                //Log.i ("INFO", "Falha no upload" + e.getMessage())
+            }
+
+        });
     }
+
+    private void exibirMensagemErro(String falha_ao_fazer_upload) {
+    }
+
 
     private void carregarDadosSpinner() {
     }
@@ -97,7 +135,50 @@ public class CadastrarAnunciosActivity extends AppCompatActivity
     }
 
     public void validarDadosAnuncio (View view){
+        //recuperando os valores digitados
+        anuncio = configurarAnuncio();
+        String telefone = "";
+        String valor = String.valueOf(campoValor.getRawValue());
+        String estado = campoEstado.getSelectedItem().toString();
+        String categoria = campoCategoria.getSelectedItem().toString();
+        String titulo = campoTitulo.getText().toString();
 
+        if(campoContato.getRawText()!=null){
+            telefone = campoContato.getRawText().toString();
+        }
+        String desc = campoDesc.getText().toString();
+        //recuperar imagens
+        if(listaFotosRecuperadas.size()!=0){
+            if(!anuncio.getEstado().isEmpty()){
+                if(!anuncio.getTitulo().isEmpty()){
+                    if(valor.isEmpty()&&!valor.equals("0")){
+                        if (!anuncio.getTelefone().isEmpty()&&anuncio.getTelefone().length()==11){
+                           if(!anuncio.getDescricao().isEmpty()){
+                               salvarAnuncio(view);
+                           }
+                        }
+                        else{
+                            exibirMensagemErro("Digite um número com 11 dígitos...");
+
+                        }
+                    }
+                    else{
+                        exibirMensagemErro("Aplique um valor do produto...");
+
+                    }
+                }
+                else{
+                    exibirMensagemErro("Dê um título...");
+
+                }
+            }
+            else{
+                exibirMensagemErro("Escolha um estado...");
+            }
+        }
+        else{
+            exibirMensagemErro("Escolha ao menos uma imagem...");
+        }
     }
 
     public void alertaValidacaoPermissao(){
@@ -114,6 +195,28 @@ public class CadastrarAnunciosActivity extends AppCompatActivity
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    private Anuncio configurarAnuncio(){
+
+        String cel = "";
+        String estado = campoEstado.getSelectedItem().toString();
+        String categoria = campoCategoria.getSelectedItem().toString();
+        String titulo = campoTitulo.getText().toString();
+        String desc = campoDesc.getText().toString();
+        String valor = campoValor.getText().toString();
+        String contato = campoContato.getText().toString();
+
+        Anuncio anuncio= new Anuncio();
+        anuncio.setEstado(estado);
+        anuncio.setDescricao(desc);
+        anuncio.setTelefone(contato);
+        anuncio.setCategoria(categoria);
+        anuncio.setTitulo(titulo);
+        anuncio.setValor(valor);
+
+        return anuncio;
+    }
+
   }
 
 
