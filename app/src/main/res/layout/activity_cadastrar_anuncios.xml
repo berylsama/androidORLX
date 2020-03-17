@@ -113,7 +113,7 @@
         android:background="@color/colorQuatro"
         android:padding="10dp"
         android:text="Cadastrar anúncio"
-        android:textColor="@color/colorPrimaryDark"/>
-        //android:onClick="validarDadosAnuncio"
+        android:textColor="@color/colorPrimaryDark"
+        android:onClick="validarDadosAnuncio"/>
 
 </LinearLayout>

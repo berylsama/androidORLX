@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ORLYX</string>
     <string-array name="estados">
+        <item>Estado</item>
         <item>SP</item>
         <item>RJ</item>
         <item>MG</item>
@@ -14,6 +15,7 @@
     </string-array>
 
     <string-array name="categorias">
+        <item>Categoria</item>
         <item>Veículos</item>
         <item>Bicicletas</item>
         <item>Vestuário</item>
